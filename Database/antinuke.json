@@ -1,0 +1,10 @@
+{
+    "antinuke_enabled": true,
+    "1222127663091814481": {
+        "antinuke_enabled": true,
+        "mode": "secure",
+        "whitelist": [],
+        "arch_goat_role_id": 1230201589306888337,
+        "quarantine_role_id": 1226946012216688770
+    }
+}
