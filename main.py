@@ -11,7 +11,7 @@ from discord.ui import View, Button
 from Extra.np import get_prefix
 colorama.init(autoreset=True)
 
-status = cycle(['The Arch | $help ', 'Ray <3', 'Shadow <3', 'Bazzi <3'])
+status = cycle(['The Arch | $help '])
 
 with open('Database/info.json', 'r') as f:
     Data = json.load(f)
@@ -35,7 +35,7 @@ class Bot(commands.AutoShardedBot):
             case_insensitive=True,
             strip_after_prefix=True,
             status=discord.Status.dnd,
-            activity=discord.Activity(type=discord.ActivityType.listening, name=next(status)),
+            activity=discord.Activity(type=discord.ActivityType.playing, name=next(status)),
         )
 
     async def setup_hook(self):
@@ -69,7 +69,7 @@ class Bot(commands.AutoShardedBot):
 
     @tasks.loop(seconds=2)
     async def status_task(self):
-        await self.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=next(status)))
+        await self.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name=next(status)))
 
     async def get_context(self, message, *, cls=None):
         return await super().get_context(message, cls=cls or Context)
