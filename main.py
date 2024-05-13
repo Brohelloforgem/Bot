@@ -114,9 +114,9 @@ os.environ["JISHAKU_FORCE_PAGINATOR"] = "True"
 client=Bot()
 
 client.owner_ids=ray
-ray = ""
+ray1 = os.getenv("token")
 
 async def main():
-    await client.start(ray, reconnect=True)
+    await client.start(ray1, reconnect=True)
 
 asyncio.run(main())
