@@ -11,7 +11,7 @@ from discord.ui import View, Button
 from Extra.np import get_prefix
 colorama.init(autoreset=True)
 
-status = cycle(['The SkyGem | $help ','play.skygem.fun'])
+status = cycle(['The SkyGem | $help ', 'play.skygem.fun'])
 
 with open('Database/info.json', 'r') as f:
     Data = json.load(f)
@@ -23,7 +23,23 @@ class Context(commands.Context):
         return await super().send(content, *args, **kwargs)
 
 intents = discord.Intents.all()
+intents.message_content = True
 
+client = discord.Client(intents=intents)
+
+@client.event
+async def on_ready():
+    print(f'We have logged in as {client.user}')
+
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+
+    if message.content.startswith('$hello'):
+        await message.channel.send('Hello!')
+
+client.run(os.getenv("token"))
 class Bot(commands.AutoShardedBot):
     def __init__(self):
         super().__init__(
@@ -35,7 +51,7 @@ class Bot(commands.AutoShardedBot):
             case_insensitive=True,
             strip_after_prefix=True,
             status=discord.Status.dnd,
-            activity=discord.Activity(type=discord.ActivityType.playing, name=next(status)),
+            activity=discord.Activity(type=discord.ActivityType.listening, name=next(status)),
         )
 
     async def setup_hook(self):
@@ -69,7 +85,7 @@ class Bot(commands.AutoShardedBot):
 
     @tasks.loop(seconds=2)
     async def status_task(self):
-        await self.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name=next(status)))
+        await self.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=next(status)))
 
     async def get_context(self, message, *, cls=None):
         return await super().get_context(message, cls=cls or Context)
@@ -111,9 +127,12 @@ os.environ["JISHAKU_HIDE"] = "True"
 os.environ["JISHAKU_NO_UNDERSCORE"] = "True"
 os.environ["JISHAKU_FORCE_PAGINATOR"] = "True"
 
-client.owner_ids=ray
+client=Bot()
 
-async def main(AA):
-    await client.run(os.getenv("token"), reconnect=True)
+client.owner_ids=ray
+ray = ""
+
+async def main():
+    await client.start(ray, reconnect=True)
 
 asyncio.run(main())
