@@ -77,7 +77,7 @@ class infobutton(discord.ui.View):
         self.developer_button_disabled = True
 
         developers = {
-            "Gemwizz": "1043194242476036107"
+            "Gemwizz": "1207039907806314547"
         }
 
         embed = discord.Embed(title="Info About SkyGem", color=self.color)
