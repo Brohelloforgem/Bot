@@ -11,7 +11,7 @@ from discord.ui import View, Button
 from Extra.np import get_prefix
 colorama.init(autoreset=True)
 
-status = cycle(['The Arch | $help '])
+status = cycle(['The SkyGem | $help ','play.skygem.fun'])
 
 with open('Database/info.json', 'r') as f:
     Data = json.load(f)
