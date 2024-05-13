@@ -110,20 +110,10 @@ os.environ["JISHAKU_NO_DM_TRACEBACK"] = "True"
 os.environ["JISHAKU_HIDE"] = "True"
 os.environ["JISHAKU_NO_UNDERSCORE"] = "True"
 os.environ["JISHAKU_FORCE_PAGINATOR"] = "True"
-        
-intents = discord.Intents.default()
-intents.message_content = True
-
-client = discord.Client(intents=intents)
-
-client.run(os.getenv("token"))
-
-client=Bot()
 
 client.owner_ids=ray
-ray = ""
 
 async def main(AA):
-    await client.start(ray, reconnect=True)
+    await client.run(os.getenv("token"), reconnect=True)
 
 asyncio.run(main())
