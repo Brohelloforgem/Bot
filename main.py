@@ -110,13 +110,22 @@ os.environ["JISHAKU_NO_DM_TRACEBACK"] = "True"
 os.environ["JISHAKU_HIDE"] = "True"
 os.environ["JISHAKU_NO_UNDERSCORE"] = "True"
 os.environ["JISHAKU_FORCE_PAGINATOR"] = "True"
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+
+    if message.content.startswith('$hello'):
+        await message.channel.send('Hello!')
+
+client.run('os.getenv("token"))
 
 client=Bot()
 
 client.owner_ids=ray
 ray = ""
 
-async def main():
+async def main(AA):
     await client.start(ray, reconnect=True)
 
 asyncio.run(main())
