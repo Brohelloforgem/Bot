@@ -32,8 +32,8 @@ class infobutton(discord.ui.View):
 
         self.list_supporters_button_disabled = True
 
-        server_id = 1213550226128765019
-        role_id = 1216053924402958336
+        server_id = 1231638877563785316
+        role_id = 1231916776393150486
 
         guild = self.bot.get_guild(server_id)
         if not guild:
@@ -77,12 +77,10 @@ class infobutton(discord.ui.View):
         self.developer_button_disabled = True
 
         developers = {
-            "Ray.ly": "1043194242476036107",
-            "Shadow": "765865384011628574",
-            "Bazzi": "1195470182831894558"
+            "Gemwizz": "1043194242476036107"
         }
 
-        embed = discord.Embed(title="Info About Arch", color=self.color)
+        embed = discord.Embed(title="Info About SkyGem", color=self.color)
         
         for developer, user_id in developers.items():
             member = await interaction.guild.fetch_member(int(user_id))
