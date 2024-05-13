@@ -3,8 +3,8 @@ import asyncio
 from discord.ext import commands
 from discord import app_commands, SelectOption, Button
 from discord import ButtonStyle
-link1 = "https://discord.com/oauth2/authorize?client_id=1213860294301061122&permissions=8&scope=bot"
-link = "https://discord.com/invite/tWMWQhPcdb"
+link1 = "https://youtube.com/@demonplayzx?si=-ibZn71WLQMkuHMW"
+link = "https://discord.com/invite/qZBwUwsF7D"
 
 giveaway = "<:icon_GiveawayIcon:1214584516849696788>"
 Extra = "<:extra:1213546253649186926>"
@@ -22,7 +22,7 @@ class MenuView(discord.ui.View):
         super().__init__(timeout=timeout)
         self.author = author
         self.color = 0x49015e
-    @discord.ui.select(placeholder="Hey !! I'm Arch  ", options=[
+    @discord.ui.select(placeholder="Hey !! I'm SkyGem  ", options=[
         SelectOption(label="Moderation", value="moderation"),
        # SelectOption(label="Antinuke", value="antinuke"),
         SelectOption(label="Autoresponder", value="autoresponder"),
@@ -98,7 +98,7 @@ class Help(commands.Cog):
     async def help(self, ctx):
         view = MenuView(ctx.author)
         embed = discord.Embed(color = 0x49015e,
-                              description=f'**My prefix is `$`\nTotal Commands - {len(set(self.bot.walk_commands()))}\n[The Arch]({link1}) | [Support]({link})\nThanks for using Arch\n```- [] = optional argument\n- <> = required argument\n- Do NOT Type These When Using Commands !```**')
+                              description=f'**My prefix is `$`\nTotal Commands - {len(set(self.bot.walk_commands()))}\n[Yt]({link1}) | [Discord]({link})\nThanks for using Arch\n```- [] = optional argument\n- <> = required argument\n- Do NOT Type These When Using Commands !```**')
         embed.add_field(
             name="__**Modules**__",
             value=f"{autoresp} : Autoresponder\n{music} : Music\n{autorole} : Autorole\n{utility} : Utility\n{Custom_roles} : Trigger roles\n{leaderboards} : leaderboards\n{info} : Info\n{moderation} : Moderation\n{giveaway} : Giveaway")
@@ -106,8 +106,8 @@ class Help(commands.Cog):
         embed.set_thumbnail(url=self.bot.user.avatar.url)
         embed.set_footer(text="Powered By The Arch") 
         embed.set_image(url='https://cdn.discordapp.com/banners/1210585566815715408/a_75f33a3027d94a2d98476211a1994f02.gif?size=512')
-        button1 = discord.ui.Button(style=discord.ButtonStyle.link, label="The Arch", url=link1)
-        button2 = discord.ui.Button(style=discord.ButtonStyle.link, label="Support", url=link)
+        button1 = discord.ui.Button(style=discord.ButtonStyle.link, label="Yt", url=link1)
+        button2 = discord.ui.Button(style=discord.ButtonStyle.link, label="Discord", url=link)
 
         view.add_item(button1)
         view.add_item(button2)
